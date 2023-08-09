@@ -1,21 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Metadata;
 
 public class MapGenerator : MonoBehaviour
 {
+    [Header("Listas")]
     [SerializeField] GameObject[] patronMapPrefab;
     [SerializeField] Dictionary<int, List<PatronController>> patronDictionary = new Dictionary<int, List<PatronController>>();
+    [SerializeField] List<PatronPrefabData> childObjects = new List<PatronPrefabData>();
 
     [Header("Variables")]
     [SerializeField] float waitTimeRaycast = 1;
 
+    [Header("Componentes")]
     [SerializeField] PatronController lastPatron;
     [SerializeField] GameObject parentPatron;
+    [SerializeField] GameObject mapStartPrefab;
 
     private void Start() {
         InstantiateAllPrefabs();
         StartCoroutine(ContinuousRaycast());
+
+        for(int i =0; i<mapStartPrefab.transform.childCount; i++) {
+            PatronPrefabData patronData = new PatronPrefabData();
+            patronData.patron = mapStartPrefab.transform.GetChild(i).gameObject.GetComponent<PatronController>();
+            patronData.initialPos = mapStartPrefab.transform.GetChild(i).gameObject.transform.localPosition;
+            childObjects.Add(patronData);
+        }
+
+        GameManager.Instance.OnGameStart += ResetMap;
     }
 
     private IEnumerator ContinuousRaycast() {
@@ -29,7 +43,7 @@ public class MapGenerator : MonoBehaviour
         }
         else {
             // El Raycast no colisionó con ningún objeto
-            InstantiatePatronMap();
+            if(GameManager.Instance.gameState == GameState.Game) InstantiatePatronMap();
         }
 
         // Pintar el rayo en la escena
@@ -71,5 +85,25 @@ public class MapGenerator : MonoBehaviour
         patron.SetNewPosition(new Vector3(0, 2.75f -3.16f, lastPatron.gameObject.transform.position.z + lastPatron.plartformScale.localScale.z));
 
         lastPatron = patron;
+    }
+
+    public void ResetMap() {
+        DisableAllPrefabsInDictionary();
+        PatronPrefabData lastPatronData = new PatronPrefabData();
+        foreach (PatronPrefabData child in childObjects) {
+            child.patron.SetNewPositionZ(child.initialPos.z);
+            child.patron.EnablePatron();
+            lastPatronData = child;
+        }
+        lastPatron = lastPatronData.patron;
+    }
+
+    void DisableAllPrefabsInDictionary() {
+        foreach (var key in patronDictionary.Keys) {
+            List<PatronController> gameObjectsList = patronDictionary[key];
+            foreach (PatronController obj in gameObjectsList) {
+                obj.DisablePatron();
+            }
+        }
     }
 }

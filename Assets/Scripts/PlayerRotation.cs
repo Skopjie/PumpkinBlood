@@ -9,16 +9,14 @@ public class PlayerRotation : MonoBehaviour
     [Header("Componentes")]
     [SerializeField] BridgeConnection python;
 
+    [Header("Variables")]
     [SerializeField] float rotationSpeed = 100f;
-    public float rotationSpeedY = 5f;
+    [SerializeField] float rotationSpeedY = 5f;
+
     [SerializeField] float maxRotationY = 35;
-
-    private float t = 0f;
-
-    [SerializeField] bool moveX = false;
+    [SerializeField] bool activeMovement = false;
 
     float angleX = 0;
-
     float angleY = 0;
     float angleYActual = 0;
 
@@ -28,33 +26,26 @@ public class PlayerRotation : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(GameManager.Instance.gameState == GameState.Game) {
+        if (activeMovement) {
             angleX += rotationSpeed * Time.deltaTime;
             transform.eulerAngles = new Vector3(angleX, angleY, 0);
         }
     }
 
     public void MoveDirection(string direction) {
-        float num = float.Parse(direction, CultureInfo.InvariantCulture);
-        RotateY(num);
-    }
-
-    public float MapNumber(float inputNumber, float inputMin, float inputMax, float outputMin, float outputMax) {
-        // Asegurarse de que el valor esté dentro del rango de entrada
-        inputNumber = Mathf.Clamp(inputNumber, inputMin, inputMax);
-
-        // Realizar el mapeo lineal del rango de entrada al rango de salida
-        float inputRange = inputMax - inputMin;
-        float outputRange = outputMax - outputMin;
-        float mappedNumber = ((inputNumber - inputMin) / inputRange) * outputRange + outputMin;
-
-        return mappedNumber;
+        if (activeMovement) {
+            float num = float.Parse(direction, CultureInfo.InvariantCulture);
+            RotateY(num);
+        }
     }
 
     void RotateY(float direction) {
         angleYActual = maxRotationY * direction;
         angleYActual = Mathf.Clamp(angleYActual, -maxRotationY, maxRotationY);
         angleY = angleYActual;
-        //angleY = Mathf.Lerp(angleY, angleYActual, rotationSpeedY * Time.deltaTime);
+    }
+
+    public void SetActiveMovement(bool active) {
+        activeMovement = active;
     }
 }

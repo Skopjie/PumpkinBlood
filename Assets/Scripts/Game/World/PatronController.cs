@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct PatronPrefabData {
+    public Vector3 initialPos;
+    public PatronController patron;
+}
+
 public class PatronController : MonoBehaviour
 {
-
     [Header("Variables")]
     [SerializeField] float speedPatron = 5;
 
@@ -16,7 +21,9 @@ public class PatronController : MonoBehaviour
 
     private void Start() {
         rgbd = GetComponent<Rigidbody>();
+
         GameManager.Instance.OnGameIsOver += StopMovement;
+        GameManager.Instance.OnGameStart += StartMovement;
     }
 
     private void FixedUpdate() {
@@ -28,12 +35,17 @@ public class PatronController : MonoBehaviour
         else DisablePatron();
     }
 
-    void EnablePatron() {
+    public void EnablePatron() {
         gameObject.SetActive(true);
+        if (GameManager.Instance.gameState == GameState.Game) StartMovement();
     }
 
-    void DisablePatron() {
+    public void DisablePatron() {
         gameObject.SetActive(false);
+    }
+
+    void StartMovement() {
+        isMoving = true;
     }
 
     void StopMovement() {
@@ -46,5 +58,9 @@ public class PatronController : MonoBehaviour
 
     public void SetNewPosition(Vector3 newPosition) {
         transform.position = newPosition;
+    }
+
+    public void SetNewPositionZ(float newPosition) {
+        transform.position = new Vector3(transform.position.x,transform.position.y, newPosition);
     }
 }

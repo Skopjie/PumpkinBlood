@@ -33,7 +33,11 @@ public class BridgeConnection : MonoBehaviour
 
     private void Update() {
         if (msgs.Count > 0) {
-            OnMessageReceived(msgs.Pop());
+            string newMsg = msgs.Pop();
+            if (newMsg != "camara")
+                OnMessageReceived(newMsg);
+            else
+                GameManager.Instance.CameraDetected();
         }
     }
 

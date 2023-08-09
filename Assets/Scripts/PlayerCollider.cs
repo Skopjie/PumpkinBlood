@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCollider : MonoBehaviour
 {
     [SerializeField]PlayerController controller;
+
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag =="Obstaculo") {
             print("death");
