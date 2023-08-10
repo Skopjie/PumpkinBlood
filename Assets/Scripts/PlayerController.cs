@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Pumpkin")]
     [SerializeField] GameObject ParticleDeath;
     [SerializeField] GameObject PumkinGO;
 
@@ -11,8 +12,12 @@ public class PlayerController : MonoBehaviour
 
     public bool playerIsActive = false;
 
+    Vector3 deathPlayerInitPos = Vector3.zero;
+
     private void Start() {
         GameManager.Instance.OnGameStart += SpawnPlayer;
+
+        deathPlayerInitPos = ParticleDeath.transform.position;
     }
 
     public void Death() {
@@ -26,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     public void SpawnPlayer() {
         playerMovement.ResetInitialPosition();
+        ParticleDeath.transform.position = deathPlayerInitPos;
         ActivePumpkinMovement();
 
         PumkinGO.SetActive(true);

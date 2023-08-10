@@ -82,7 +82,7 @@ public class MapGenerator : MonoBehaviour
     void InstantiatePatronMap() {
         PatronController patron = GetRandomPatronMap();
         patron.SetEnablePatron(true);
-        patron.SetNewPosition(new Vector3(0, 2.75f -3.16f, lastPatron.gameObject.transform.position.z + lastPatron.plartformScale.localScale.z));
+        patron.SetNewPosition(new Vector3(2.38f, -0.2799928f - 3.16f, lastPatron.gameObject.transform.position.z + lastPatron.plartformScale.localScale.z));
 
         lastPatron = patron;
     }

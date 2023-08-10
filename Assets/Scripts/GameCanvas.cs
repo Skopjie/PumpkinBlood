@@ -38,7 +38,7 @@ public class GameCanvas : MonoBehaviour
                 gameCamera.Priority = 11;
                 break;
             case GameState.GameOver:
-                menuCamera.Priority = 11;
+                gameCamera.Priority = 11;
                 break;
             default:
                 break;

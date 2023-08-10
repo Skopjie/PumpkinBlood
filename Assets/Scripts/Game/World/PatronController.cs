@@ -27,7 +27,16 @@ public class PatronController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if(isMoving) transform.Translate(-Vector3.forward * speedPatron * Time.deltaTime);
+        if (isMoving) {
+            // Calcula el vector de dirección global hacia adelante
+            Vector3 globalForward = Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.forward;
+
+            // Calcula el movimiento hacia adelante en coordenadas globales
+            Vector3 globalForwardMovement = globalForward * -speedPatron * Time.deltaTime;
+
+            // Aplica el movimiento en coordenadas globales
+            transform.position += globalForwardMovement;
+        } 
     }
 
     public void SetEnablePatron(bool enable) {

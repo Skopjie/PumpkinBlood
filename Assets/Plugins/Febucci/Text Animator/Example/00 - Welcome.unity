@@ -98,8 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 49d28ee43fb9747d884ba6ecfade7616,
-    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 49d28ee43fb9747d884ba6ecfade7616, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -203,6 +202,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.62, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -255,6 +255,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1911804838}
   m_Father: {fileID: 0}
@@ -295,6 +296,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 903061074}
   m_RootOrder: 0
@@ -356,9 +358,9 @@ MonoBehaviour:
     ^^<speed=1>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
-  m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f,
-    type: 2}
-  m_fontSharedMaterials: []
+  m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
+  m_fontSharedMaterials:
+  - {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -483,8 +485,7 @@ MonoBehaviour:
   isResettingTimeOnNewText: 1
   useDefaultDatabases: 1
   databaseBehaviors: {fileID: 11400000, guid: 143063c9d42da4bb3bdef3e969df1633, type: 2}
-  databaseAppearances: {fileID: 11400000, guid: efcefe34ffbda4c5eb7e39d858738fbc,
-    type: 2}
+  databaseAppearances: {fileID: 11400000, guid: efcefe34ffbda4c5eb7e39d858738fbc, type: 2}
   databaseActions: {fileID: 11400000, guid: 59963a936d6fb4257a79cffca6bafcbb, type: 2}
   defaultAppearancesTags:
   - size
