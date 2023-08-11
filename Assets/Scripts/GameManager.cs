@@ -32,12 +32,16 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Game;
         OnGameStart?.Invoke(); 
     }
+
     public void GameIsOver() {
-        print("deathqsqsqsq");
         gameState = GameState.GameOver; 
         OnGameIsOver?.Invoke(); 
     }
-    public void GameExit() { OnGameExit?.Invoke(); }
+
+    public void GameExit() {
+        gameState = GameState.Menu;
+        OnGameExit?.Invoke();
+    }
 
 
 

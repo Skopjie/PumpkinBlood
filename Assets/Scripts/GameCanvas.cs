@@ -14,13 +14,16 @@ public class GameCanvas : MonoBehaviour
     [Header("Cameras")]
     [SerializeField] CinemachineVirtualCamera menuCamera;
     [SerializeField] CinemachineVirtualCamera gameCamera;
+    [SerializeField] CinemachineVirtualCamera loadingCamera;
 
 
     private void Start() {
         GameManager.Instance.OnCameraDetected += EnableMenu;
+        GameManager.Instance.OnGameExit += EnableMenu;
         GameManager.Instance.OnGameStart += EnableGame;
         GameManager.Instance.OnGameIsOver += EnableGameOver;
     }
+
     public void EnableGameOver() { EnableCanvas(GameState.GameOver); }
     public void EnableMenu() { EnableCanvas(GameState.Menu); }
     public void EnableGame() { EnableCanvas(GameState.Game); }
@@ -29,7 +32,7 @@ public class GameCanvas : MonoBehaviour
         DisableAllCameras();
         switch (gameState) {
             case GameState.Loading:
-                menuCamera.Priority = 11;
+                loadingCamera.Priority = 11;
                 break;
             case GameState.Menu:
                 menuCamera.Priority = 11;
@@ -79,5 +82,6 @@ public class GameCanvas : MonoBehaviour
     void DisableAllCameras() {
         menuCamera.Priority = 10;
         gameCamera.Priority = 10;
+        loadingCamera.Priority = 10;
     }
 }

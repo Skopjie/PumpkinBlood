@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void SetActiveMovement(bool active) {
+        rgbd.velocity = Vector3.zero;
         activeMovement = active;
     }
 
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void ResetInitialPosition() {
+        rgbd.velocity = Vector3.zero;
         transform.localPosition = initialPos;
     }
 }

@@ -3,16 +3,20 @@ import cv2
 import platform
     
 class Webcam:
+    camera_is_ready = False
+    head_direction_control = ""
+
     def __init__(self):
         self.stopped = False
         self.stream = None
         self.lastFrame = None
         self.os_name = platform.system()
 
-    def start(self):
+    def start(self, head_control):
         t = Thread(target=self.update, args=())
         t.daemon = True
         t.start()
+        self.head_direction_control = head_control
         return self
 
     def update(self):
@@ -45,4 +49,9 @@ class Webcam:
         return self.stream.get(cv2.CAP_PROP_FRAME_HEIGHT )
     
     def ready(self):
+        if self.lastFrame is not None:
+            if self.camera_is_ready == False:
+                self.camera_is_ready = True
+                self.head_direction_control.send_message_unity()
+
         return self.lastFrame is not None

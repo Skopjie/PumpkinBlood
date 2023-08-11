@@ -30,6 +30,7 @@ public class MapGenerator : MonoBehaviour
         }
 
         GameManager.Instance.OnGameStart += ResetMap;
+        GameManager.Instance.OnGameExit += ResetMap;
     }
 
     private IEnumerator ContinuousRaycast() {

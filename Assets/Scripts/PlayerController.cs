@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     Vector3 deathPlayerInitPos = Vector3.zero;
 
     private void Start() {
-        GameManager.Instance.OnGameStart += SpawnPlayer;
+        GameManager.Instance.OnGameExit += SpawnPlayer;
+        GameManager.Instance.OnGameStart += SpawnAndStartPlayer;
 
         deathPlayerInitPos = ParticleDeath.transform.position;
     }
@@ -32,16 +33,21 @@ public class PlayerController : MonoBehaviour
     public void SpawnPlayer() {
         playerMovement.ResetInitialPosition();
         ParticleDeath.transform.position = deathPlayerInitPos;
-        ActivePumpkinMovement();
 
         PumkinGO.SetActive(true);
         ParticleDeath.SetActive(false);
+    }
+
+    public void SpawnAndStartPlayer() {
+        SpawnPlayer();
+        ActivePumpkinMovement();
     }
 
 
 
     public void ActivePumpkinMovement() {
         SetActivePumpkinMovement(true);
+        ActivePumpkinMovement();
     }
 
     public void DisactivePumpkinMovement() {

@@ -28,7 +28,7 @@ class Game:
         self.initialize()
 
     def initialize(self):
-        self.webcam = Webcam().start()
+        self.webcam = Webcam().start(self)
         
         self.max_face_surf_height=0
         self.face_left_x = 0
@@ -92,6 +92,9 @@ class Game:
                     self.detect_head_movement(top, bottom)
 
             k = cv2.waitKey(1) & 0xFF
+
+    def send_message_unity(self):
+        self.connection.sendall("camera".encode())
 
     def detect_head_movement(self, top, bottom):
         radians = math.atan2(bottom[1] - top[1], bottom[0] - top[0])

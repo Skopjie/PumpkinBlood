@@ -20,8 +20,12 @@ public class PlayerRotation : MonoBehaviour
     float angleY = 0;
     float angleYActual = 0;
 
+    Vector3 initialRot = Vector3.zero;
+
     private void Start() {
         python.OnMessageReceived += MoveDirection;
+
+        initialRot = transform.eulerAngles;
     }
 
     void FixedUpdate()
@@ -46,6 +50,7 @@ public class PlayerRotation : MonoBehaviour
     }
 
     public void SetActiveMovement(bool active) {
+        transform.eulerAngles = initialRot;
         activeMovement = active;
     }
 }
