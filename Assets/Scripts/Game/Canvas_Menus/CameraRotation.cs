@@ -2,24 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class PlayerRotation : MonoBehaviour
+public class CameraRotation : MonoBehaviour
 {
     [Header("Componentes")]
     [SerializeField] BridgeConnection python;
 
     [Header("Variables")]
+    [SerializeField] float rotationSpeedZ = 5f;
+    [SerializeField] float maxRotationZ = 35;
 
-    [SerializeField] float rotationSpeed = 100f;
-    [SerializeField] float rotationSpeedY = 5f;
-
-    [SerializeField] float maxRotationY = 35;
     [SerializeField] bool activeMovement = false;
 
-    float angleX = 0;
-    float angleY = 0;
-    float angleYActual = 0;
+    float angleZ = 0;
+    float angleZActual = 0;
 
     Vector3 initialRot = Vector3.zero;
 
@@ -29,11 +25,9 @@ public class PlayerRotation : MonoBehaviour
         initialRot = transform.eulerAngles;
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         if (activeMovement) {
-            angleX += rotationSpeed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(angleX, angleY, 0);
+            transform.eulerAngles = new Vector3(initialRot.x, initialRot.y, angleZ);
         }
     }
 
@@ -45,9 +39,9 @@ public class PlayerRotation : MonoBehaviour
     }
 
     void RotateY(float direction) {
-        angleYActual = maxRotationY * direction;
-        angleYActual = Mathf.Clamp(angleYActual, -maxRotationY, maxRotationY);
-        angleY = angleYActual;
+        angleZActual = maxRotationZ * direction;
+        angleZActual = Mathf.Clamp(angleZActual, -maxRotationZ, maxRotationZ);
+        angleZ = -angleZActual;
     }
 
     public void SetActiveMovement(bool active) {

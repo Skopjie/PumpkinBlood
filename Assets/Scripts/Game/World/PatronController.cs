@@ -14,16 +14,18 @@ public class PatronController : MonoBehaviour
     [SerializeField] float speedPatron = 5;
 
     [Header("Componentes")]
-    [SerializeField] Rigidbody rgbd;
     public Transform plartformScale;
+
+    public Transform ChickenParentTransform;
+    [SerializeField] List<ChickenController> chickenControllers = new List<ChickenController>();
 
     [SerializeField] bool isMoving = false;
 
     private void Start() {
-        rgbd = GetComponent<Rigidbody>();
-
         GameManager.Instance.OnGameIsOver += StopMovement;
         GameManager.Instance.OnGameStart += StartMovement;
+
+        GetAllChickens();
     }
 
     private void FixedUpdate() {
@@ -50,6 +52,7 @@ public class PatronController : MonoBehaviour
     }
 
     public void DisablePatron() {
+        ResetAllChickens();
         gameObject.SetActive(false);
     }
 
@@ -71,5 +74,20 @@ public class PatronController : MonoBehaviour
 
     public void SetNewPositionZ(float newPosition) {
         transform.position = new Vector3(transform.position.x,transform.position.y, newPosition);
+    }
+
+    void ResetAllChickens() {
+        foreach (ChickenController chicken in chickenControllers) {
+            chicken.ResetChicken();
+        }
+    }
+
+    void GetAllChickens() {
+        foreach (Transform child in ChickenParentTransform) {
+            ChickenController chikenControl = child.GetComponent<ChickenController>();
+            if (chikenControl != null) {
+                chickenControllers.Add(chikenControl);
+            }
+        }
     }
 }

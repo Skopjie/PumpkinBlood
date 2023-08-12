@@ -8,7 +8,6 @@ public class PlayerCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag =="Obstaculo") {
-            print("death");
             controller.Death();
         }
         if(other.gameObject.tag == "Pollo") {

@@ -39,8 +39,7 @@ public class MapGenerator : MonoBehaviour
 
         // Realizar el Raycast y pintar el rayo en la escena
         if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
-            // Aquí puedes agregar el código que deseas ejecutar cuando el Raycast golpea algo.
-            Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
+
         }
         else {
             // El Raycast no colisionó con ningún objeto

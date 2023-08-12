@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerRotation playerRotation;
 
+    [Header("Variables")]
     public bool playerIsActive = false;
+    [SerializeField] int scorePlayer = 0;
 
     Vector3 deathPlayerInitPos = Vector3.zero;
 
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void SpawnPlayer() {
+        scorePlayer = 0;
         playerMovement.ResetInitialPosition();
         ParticleDeath.transform.position = deathPlayerInitPos;
 
@@ -42,6 +45,15 @@ public class PlayerController : MonoBehaviour
         SpawnPlayer();
         ActivePumpkinMovement();
     }
+
+
+    public void AddScore() {
+        scorePlayer += 1;
+    }
+
+
+    //cORRUTINA QUE ACTIVE UNA ESPECIE DE CUENTA ATRAS PARA INICIAR 
+    //FADE CUANDO SE DA A VOLVER A JUGAR, INICIAR CUENTA Y UNA VEZ ACABADO INICIAR 
 
 
 

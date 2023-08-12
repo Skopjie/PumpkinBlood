@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class FadeTimer {
+    public float scale;
+    public float time;
+}
+
 public class GameCanvas : MonoBehaviour
 {
     [Header("Menus")]
@@ -16,13 +21,20 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera gameCamera;
     [SerializeField] CinemachineVirtualCamera loadingCamera;
 
+    [Header("Fade")]
+    public RectTransform imageRectTransform;
+    [SerializeField] List<FadeTimer> fadeTimers = new List<FadeTimer>();
+
 
     private void Start() {
         GameManager.Instance.OnCameraDetected += EnableMenu;
         GameManager.Instance.OnGameExit += EnableMenu;
         GameManager.Instance.OnGameStart += EnableGame;
         GameManager.Instance.OnGameIsOver += EnableGameOver;
+
+        //StartCoroutine(AnimateImage());
     }
+
 
     public void EnableGameOver() { EnableCanvas(GameState.GameOver); }
     public void EnableMenu() { EnableCanvas(GameState.Menu); }
@@ -84,4 +96,23 @@ public class GameCanvas : MonoBehaviour
         gameCamera.Priority = 10;
         loadingCamera.Priority = 10;
     }
+
+    /*
+    private IEnumerator AnimateImage() {
+        // Escala inicial
+        float startTime = Time.time;
+        float elapsedTime = 0f;
+
+        foreach(FadeTimer fade in fadeTimers) {
+            while (elapsedTime < animationDuration) {
+                float t = elapsedTime / animationDuration;
+                float currentScale = Mathf.Lerp(initialScale, targetScale, t);
+                imageRectTransform.localScale = new Vector3(currentScale, currentScale, 1f);
+                elapsedTime = Time.time - startTime;
+                yield return null;
+            }
+            startTime = Time.time;
+            elapsedTime = 0f;
+        }
+    }*/
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 60798257}
   m_Layer: 0
   m_Name: Rotated Box Collider
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 523647837}
   m_Layer: 0
   m_Name: Rotated Box Collider
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 739960188}
   m_Layer: 0
   m_Name: Rotated Box Collider
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,14 +114,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739960186}
-  m_LocalRotation: {x: 0.44587716, y: 0.39264694, z: -0.60366964, w: 0.5316061}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.49520823, y: 0.50474626, z: -0.50474626, w: 0.49520823}
+  m_LocalPosition: {x: 0.65, y: -6.45, z: -1.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6189498350668306755}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -22.344, z: -113.437}
 --- !u!65 &739960188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2271626, y: 2.928711, z: 0.76420736}
+  m_Size: {x: 2.2271626, y: 2.928711, z: 4.21}
   m_Center: {x: -1.5917453, y: 4.003575, z: -8.053008}
 --- !u!1 &1910786511
 GameObject:
@@ -144,10 +144,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1910786512}
-  - component: {fileID: 1910786513}
   m_Layer: 0
   m_Name: Rotated Box Collider
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,19 +166,6 @@ Transform:
   m_Father: {fileID: 6189498350668306755}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1910786513
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910786511}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4453132, y: 0.000000029802322, z: 2.7170146}
-  m_Center: {x: 0.29147637, y: 0.34853816, z: 4.595652}
 --- !u!1 &6822482125011485689
 GameObject:
   m_ObjectHideFlags: 0
