@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public void CameraDetected() { OnCameraDetected?.Invoke(); }
     public void StartGame() {
         gameState = GameState.Game;
+        print("ac2e2e2e2ive");
         OnGameStart?.Invoke(); 
     }
 

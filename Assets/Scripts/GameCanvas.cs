@@ -38,9 +38,10 @@ public class GameCanvas : MonoBehaviour
 
     public void EnableGameOver() { EnableCanvas(GameState.GameOver); }
     public void EnableMenu() { EnableCanvas(GameState.Menu); }
-    public void EnableGame() { EnableCanvas(GameState.Game); }
+    public void EnableGame() { print("cohjonenene"); EnableCanvas(GameState.Game); }
 
     public void ActiveCamera(GameState gameState) {
+        print("jajajaj "+ gameState);
         DisableAllCameras();
         switch (gameState) {
             case GameState.Loading:

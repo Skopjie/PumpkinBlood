@@ -1006,7 +1006,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1704,7 +1704,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -6317,7 +6317,7 @@ MonoBehaviour:
   menuCamera: {fileID: 1222182491}
   gameCamera: {fileID: 1094675147}
   loadingCamera: {fileID: 1929447788}
-  imageRectTransform: {fileID: 0}
+  imageRectTransform: {fileID: 1407169572}
 --- !u!1001 &653880199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6818,31 +6818,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
---- !u!1 &807110626 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2900628345191962814, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
-  m_PrefabInstance: {fileID: 801779813}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &807110628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807110626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &830494657
 GameObject:
   m_ObjectHideFlags: 0
@@ -8189,7 +8164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094675146}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 120eb4365f3c0384a82b2d32d5539757, type: 3}
   m_Name: 
@@ -8950,7 +8925,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 14
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -10373,7 +10348,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 20
+  m_Priority: 11
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -10769,7 +10744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2073551239
 RectTransform:
   m_ObjectHideFlags: 0
