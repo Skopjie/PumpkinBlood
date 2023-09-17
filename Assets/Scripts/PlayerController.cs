@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
 
     public void ActivePumpkinMovement() {
         SetActivePumpkinMovement(true);
-        ActivePumpkinMovement();
     }
 
     public void DisactivePumpkinMovement() {

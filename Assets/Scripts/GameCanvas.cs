@@ -1,12 +1,10 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
-public class FadeTimer {
-    public float scale;
-    public float time;
-}
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -15,15 +13,37 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] GameObject MenuGO;
     [SerializeField] GameObject GameGO;
     [SerializeField] GameObject GameOverGO;
+    [SerializeField] GameObject InstructionsGO;
 
     [Header("Cameras")]
     [SerializeField] CinemachineVirtualCamera menuCamera;
     [SerializeField] CinemachineVirtualCamera gameCamera;
     [SerializeField] CinemachineVirtualCamera loadingCamera;
+    [SerializeField] CinemachineVirtualCamera instructionsCamera;
 
     [Header("Fade")]
-    public RectTransform imageRectTransform;
-    [SerializeField] List<FadeTimer> fadeTimers = new List<FadeTimer>();
+    public RectTransform fadeRectTransform;
+    public Image fadeImage;
+
+    public RectTransform fadeImageRectTransform;
+    public Image iconImage;
+
+    public RectTransform fadeOnRectTransform;
+    public Image iconOnImage;
+
+    [Header("Fade Variable")]
+
+    [SerializeField] float initialFadeTimmer = 0.2f;
+    [SerializeField] float fadeTimmer = 1;
+
+    [SerializeField] float fadeIcon1Timmer = 0.5f;
+    [SerializeField] float fadeIcon2Timmer = 0.25f;
+    [SerializeField] float fadeIcon3Timmer = 1;
+
+    public float totalTimeFadeAnim = 0;
+
+    [Header("Game Menu")]
+    [SerializeField] TextMeshProUGUI scoreText;
 
 
     private void Start() {
@@ -32,16 +52,19 @@ public class GameCanvas : MonoBehaviour
         GameManager.Instance.OnGameStart += EnableGame;
         GameManager.Instance.OnGameIsOver += EnableGameOver;
 
-        //StartCoroutine(AnimateImage());
+        totalTimeFadeAnim = initialFadeTimmer + fadeIcon1Timmer + fadeIcon2Timmer + fadeIcon3Timmer;
+
+        PlayFadeOff();
     }
 
 
     public void EnableGameOver() { EnableCanvas(GameState.GameOver); }
     public void EnableMenu() { EnableCanvas(GameState.Menu); }
-    public void EnableGame() { print("cohjonenene"); EnableCanvas(GameState.Game); }
+    public void EnableGame() { EnableCanvas(GameState.Game); }
+
+    public void EnableInstructions() { EnableCanvas(GameState.Instructions); }
 
     public void ActiveCamera(GameState gameState) {
-        print("jajajaj "+ gameState);
         DisableAllCameras();
         switch (gameState) {
             case GameState.Loading:
@@ -55,6 +78,9 @@ public class GameCanvas : MonoBehaviour
                 break;
             case GameState.GameOver:
                 gameCamera.Priority = 11;
+                break;
+            case GameState.Instructions:
+                instructionsCamera.Priority = 11;
                 break;
             default:
                 break;
@@ -76,9 +102,13 @@ public class GameCanvas : MonoBehaviour
             case GameState.GameOver:
                 GameOverGO.SetActive(true);
                 break;
+            case GameState.Instructions:
+                InstructionsGO.SetActive(true);
+                break;
             default:
                 break;
         }
+        
         ActiveCamera(gameState);
     }
 
@@ -90,30 +120,64 @@ public class GameCanvas : MonoBehaviour
         MenuGO.SetActive(false);
         GameGO.SetActive(false);
         GameOverGO.SetActive(false);
+        InstructionsGO.SetActive(false);
     }
 
     void DisableAllCameras() {
         menuCamera.Priority = 10;
         gameCamera.Priority = 10;
         loadingCamera.Priority = 10;
+        instructionsCamera.Priority = 10;
     }
 
-    /*
-    private IEnumerator AnimateImage() {
-        // Escala inicial
-        float startTime = Time.time;
-        float elapsedTime = 0f;
 
-        foreach(FadeTimer fade in fadeTimers) {
-            while (elapsedTime < animationDuration) {
-                float t = elapsedTime / animationDuration;
-                float currentScale = Mathf.Lerp(initialScale, targetScale, t);
-                imageRectTransform.localScale = new Vector3(currentScale, currentScale, 1f);
-                elapsedTime = Time.time - startTime;
-                yield return null;
-            }
-            startTime = Time.time;
-            elapsedTime = 0f;
-        }
-    }*/
+
+    public void ShowScore(int score) {
+        scoreText.text = "<wave>X"+score+"</wave>";
+    }
+
+
+
+    [ContextMenu("FadeOff")]
+    public void PlayFadeOff() {
+        ResetFadePanel();
+        iconImage.color = Color.black;
+        fadeImage.color = Color.black;
+        fadeImageRectTransform.localScale = Vector3.one;
+        fadeImageRectTransform.localPosition = Vector2.zero;
+
+        fadeImage.DOFade(0.99f, initialFadeTimmer).SetEase(Ease.OutQuad).OnComplete(() => {
+            fadeImage.DOFade(0.0f, fadeTimmer).SetEase(Ease.OutQuad);
+            fadeImageRectTransform.DOScale(new Vector3(2, 2, 2), fadeIcon1Timmer).OnComplete(() => {
+                fadeImageRectTransform.DOScale(new Vector3(1, 1, 1), fadeIcon2Timmer).OnComplete(() => {
+                    fadeImageRectTransform.DOScale(new Vector3(18, 18, 18), fadeIcon3Timmer);
+                    fadeImageRectTransform.DOAnchorPos(new Vector2(0, 1575), fadeIcon3Timmer);
+                    iconImage.DOFade(0.0f, fadeIcon1Timmer + fadeIcon2Timmer + fadeIcon3Timmer).SetEase(Ease.OutQuad);
+                });
+            });
+        });
+    }
+
+
+    [ContextMenu("FadeOn")]
+    public void PlayFadeOn() {
+        ResetFadePanel();
+
+        fadeOnRectTransform.DOScale(new Vector3(2, 2, 2), fadeIcon1Timmer).OnComplete(() => {
+            fadeOnRectTransform.DOScale(new Vector3(1, 1, 1), fadeIcon2Timmer).OnComplete(() => {
+                fadeOnRectTransform.DOScale(new Vector3(30, 30, 30), fadeIcon3Timmer);
+                fadeOnRectTransform.DOAnchorPos(new Vector2(0, -700), fadeIcon3Timmer);
+            });
+        });
+    }
+
+    void ResetFadePanel() {
+        //Off
+
+
+        //On
+        iconOnImage.color = Color.black;
+        fadeOnRectTransform.localScale = Vector3.zero;
+        fadeOnRectTransform.localPosition = Vector2.zero;
+    }
 }

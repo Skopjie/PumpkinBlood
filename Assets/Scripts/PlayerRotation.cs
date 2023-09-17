@@ -51,7 +51,7 @@ public class PlayerRotation : MonoBehaviour
     }
 
     public void SetActiveMovement(bool active) {
-        transform.eulerAngles = initialRot;
+        transform.eulerAngles = new Vector3(initialRot.x, initialRot.y, initialRot.z);
         activeMovement = active;
     }
 }

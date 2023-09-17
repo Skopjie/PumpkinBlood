@@ -15,5 +15,6 @@ public class ChickenController : MonoBehaviour
     public void Death() {
         chicken.SetActive(false);
         blood.SetActive(true);
+        GameManager.Instance.AddScore();
     }
 }

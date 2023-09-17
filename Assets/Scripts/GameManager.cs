@@ -1,11 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public enum GameState {
     Loading,
     Menu,
     Game,
-    GameOver
+    GameOver, 
+    Instructions
 }
 
 public class GameManager : MonoBehaviour
@@ -15,6 +17,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] BridgeConnection bridgePython;
     [SerializeField] GameCanvas gameCanvas;
+
+
+    public int score = 0;
 
     private void Awake() {
         instace = this;
@@ -30,8 +35,8 @@ public class GameManager : MonoBehaviour
     public void CameraDetected() { OnCameraDetected?.Invoke(); }
     public void StartGame() {
         gameState = GameState.Game;
-        print("ac2e2e2e2ive");
-        OnGameStart?.Invoke(); 
+        OnGameStart?.Invoke();
+        ResetScore();
     }
 
     public void GameIsOver() {
@@ -40,8 +45,29 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameExit() {
+        StartCoroutine(CorrutineGameExit());
+    }
+
+    IEnumerator CorrutineGameExit() {
+        gameCanvas.PlayFadeOn();
+        yield return new WaitForSeconds(gameCanvas.totalTimeFadeAnim);
+
         gameState = GameState.Menu;
         OnGameExit?.Invoke();
+        yield return new WaitForSeconds(0.25f);
+
+        gameCanvas.PlayFadeOff();
+        yield return new WaitForSeconds(gameCanvas.totalTimeFadeAnim);
+    }
+
+    public void AddScore() {
+        score++;
+        gameCanvas.ShowScore(score);
+    }
+
+    public void ResetScore() {
+        score = 0;
+        gameCanvas.ShowScore(score);
     }
 
 
