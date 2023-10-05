@@ -162,7 +162,7 @@ public class GameCanvas : MonoBehaviour
     [ContextMenu("FadeOn")]
     public void PlayFadeOn() {
         ResetFadePanel();
-
+        MusicManager.Instance.PlaySFXSound(SoundEffects.Laught);
         fadeOnRectTransform.DOScale(new Vector3(2, 2, 2), fadeIcon1Timmer).OnComplete(() => {
             fadeOnRectTransform.DOScale(new Vector3(1, 1, 1), fadeIcon2Timmer).OnComplete(() => {
                 fadeOnRectTransform.DOScale(new Vector3(30, 30, 30), fadeIcon3Timmer);

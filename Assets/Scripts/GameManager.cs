@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() {
         gameState = GameState.Game;
+        MusicManager.Instance.PlaySFXSound(SoundEffects.Laught);
         MusicManager.Instance.ChangeMusicState(GameState.Game);
         OnGameStart?.Invoke();
         ResetScore();

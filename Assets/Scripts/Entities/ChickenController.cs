@@ -15,6 +15,7 @@ public class ChickenController : MonoBehaviour
     public void Death() {
         chicken.SetActive(false);
         blood.SetActive(true);
+        MusicManager.Instance.PlaySFXSound(SoundEffects.SmashChicken);
         GameManager.Instance.AddScore();
     }
 }
