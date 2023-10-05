@@ -21,6 +21,11 @@ public class PatronController : MonoBehaviour
 
     [SerializeField] bool isMoving = false;
 
+
+    Vector3 globalForward;
+    Vector3 globalForwardMovement;
+    Vector3 forward = Vector3.forward;
+
     private void Start() {
         GameManager.Instance.OnGameIsOver += StopMovement;
         GameManager.Instance.OnGameStart += StartMovement;
@@ -31,10 +36,10 @@ public class PatronController : MonoBehaviour
     private void FixedUpdate() {
         if (isMoving) {
             // Calcula el vector de dirección global hacia adelante
-            Vector3 globalForward = Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.forward;
+            globalForward = Quaternion.Euler(0, transform.eulerAngles.y, 0) * forward;
 
             // Calcula el movimiento hacia adelante en coordenadas globales
-            Vector3 globalForwardMovement = globalForward * -speedPatron * Time.deltaTime;
+            globalForwardMovement = globalForward * -speedPatron * Time.deltaTime;
 
             // Aplica el movimiento en coordenadas globales
             transform.position += globalForwardMovement;

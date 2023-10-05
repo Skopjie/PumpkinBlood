@@ -31,7 +31,7 @@ public class BridgeConnection : MonoBehaviour
         OnConnected();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         if (msgs.Count > 0) {
             string newMsg = msgs.Pop();
             if (newMsg != "camera") OnMessageReceived(newMsg);

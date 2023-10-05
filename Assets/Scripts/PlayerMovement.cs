@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 initialPos = Vector3.zero;
 
+    float num;
+    Vector3 movimiento;
+
     private void Start() {
         rgbd = GetComponent<Rigidbody>();
         python.OnMessageReceived += MoveDirection;
@@ -28,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveDirection(string direction) {
         if (activeMovement) {
-            float num = float.Parse(direction, CultureInfo.InvariantCulture);
-            Vector3 movimiento = new Vector3(num, 0f, 0f);
+            num = float.Parse(direction, CultureInfo.InvariantCulture);
+            movimiento = new Vector3(num, 0f, 0f);
             rgbd.velocity = movimiento * speedMovement;
         }
     }

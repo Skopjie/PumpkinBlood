@@ -21,6 +21,8 @@ public class PlayerRotation : MonoBehaviour
     float angleY = 0;
     float angleYActual = 0;
 
+    float num;
+
     Vector3 initialRot = Vector3.zero;
 
     private void Start() {
@@ -39,7 +41,7 @@ public class PlayerRotation : MonoBehaviour
 
     public void MoveDirection(string direction) {
         if (activeMovement) {
-            float num = float.Parse(direction, CultureInfo.InvariantCulture);
+            num = float.Parse(direction, CultureInfo.InvariantCulture);
             RotateY(num);
         }
     }

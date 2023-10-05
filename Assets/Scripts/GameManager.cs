@@ -32,15 +32,21 @@ public class GameManager : MonoBehaviour
     public Action OnGameExit = delegate { };
     public Action OnCameraDetected = delegate { };
 
-    public void CameraDetected() { OnCameraDetected?.Invoke(); }
+    public void CameraDetected() { 
+        OnCameraDetected?.Invoke();
+        MusicManager.Instance.ChangeMusicState(GameState.Menu);
+    }
+
     public void StartGame() {
         gameState = GameState.Game;
+        MusicManager.Instance.ChangeMusicState(GameState.Game);
         OnGameStart?.Invoke();
         ResetScore();
     }
 
     public void GameIsOver() {
-        gameState = GameState.GameOver; 
+        gameState = GameState.GameOver;
+        MusicManager.Instance.ChangeMusicState(GameState.GameOver);
         OnGameIsOver?.Invoke(); 
     }
 
@@ -53,6 +59,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(gameCanvas.totalTimeFadeAnim);
 
         gameState = GameState.Menu;
+        MusicManager.Instance.ChangeMusicState(GameState.Menu);
         OnGameExit?.Invoke();
         yield return new WaitForSeconds(0.25f);
 
