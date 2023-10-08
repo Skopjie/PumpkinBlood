@@ -15,6 +15,7 @@ public class PatronController : MonoBehaviour
 
     [Header("Componentes")]
     public Transform plartformScale;
+    [SerializeField] CandleController[] candleList;
 
     public Transform ChickenParentTransform;
     [SerializeField] List<ChickenController> chickenControllers = new List<ChickenController>();
@@ -27,6 +28,7 @@ public class PatronController : MonoBehaviour
     Vector3 forward = Vector3.forward;
 
     private void Start() {
+        //speedPatron = GameManager.Instance.actualSpeedPlatform;
         GameManager.Instance.OnGameIsOver += StopMovement;
         GameManager.Instance.OnGameStart += StartMovement;
 
@@ -57,6 +59,7 @@ public class PatronController : MonoBehaviour
     }
 
     public void DisablePatron() {
+        DisctiveAllCandle();
         ResetAllChickens();
         gameObject.SetActive(false);
     }
@@ -94,5 +97,15 @@ public class PatronController : MonoBehaviour
                 chickenControllers.Add(chikenControl);
             }
         }
+    }
+
+    public void ActiveAllCandle() {
+        foreach(CandleController candel in candleList)
+            candel.ActiveCandle();
+    }
+
+    public void DisctiveAllCandle() {
+        foreach (CandleController candel in candleList)
+            candel.DisactiveCandle();
     }
 }

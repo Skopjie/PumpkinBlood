@@ -20,6 +20,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera gameCamera;
     [SerializeField] CinemachineVirtualCamera loadingCamera;
     [SerializeField] CinemachineVirtualCamera instructionsCamera;
+    [SerializeField] CinemachineVirtualCamera gameOverCamera;
 
     [Header("Fade")]
     public RectTransform fadeRectTransform;
@@ -82,6 +83,9 @@ public class GameCanvas : MonoBehaviour
             case GameState.Instructions:
                 instructionsCamera.Priority = 11;
                 break;
+            case GameState.ReturnToMenu:
+                gameOverCamera.Priority = 11;
+                break;
             default:
                 break;
         }
@@ -128,6 +132,7 @@ public class GameCanvas : MonoBehaviour
         gameCamera.Priority = 10;
         loadingCamera.Priority = 10;
         instructionsCamera.Priority = 10;
+        gameOverCamera.Priority = 10;
     }
 
 

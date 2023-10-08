@@ -7,7 +7,14 @@ public enum GameState {
     Menu,
     Game,
     GameOver, 
-    Instructions
+    Instructions,
+    ReturnToMenu
+}
+
+[System.Serializable]
+public class LevelData {
+    public int numberChickens;
+    public float speedPlatform;
 }
 
 public class GameManager : MonoBehaviour
@@ -15,17 +22,21 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instace; } }
     private static GameManager instace;
 
+    [Header("Componentes")]
     [SerializeField] BridgeConnection bridgePython;
     [SerializeField] GameCanvas gameCanvas;
 
-
+    [Header("Variables")]
     public int score = 0;
+
+    public float actualSpeedPlatform = 15; //5
 
     private void Awake() {
         instace = this;
     }
 
     public GameState gameState = GameState.Loading;
+    [SerializeField] LevelData[] levelData;
 
     public Action OnGameStart = delegate { };
     public Action OnGameIsOver = delegate { };
@@ -56,6 +67,7 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator CorrutineGameExit() {
+        ChangeGameCanvas(GameState.ReturnToMenu);
         gameCanvas.PlayFadeOn();
         yield return new WaitForSeconds(gameCanvas.totalTimeFadeAnim);
 
@@ -76,9 +88,16 @@ public class GameManager : MonoBehaviour
     public void ResetScore() {
         score = 0;
         gameCanvas.ShowScore(score);
+        actualSpeedPlatform = 2;
     }
 
+    public void CheckNewLevel() {
+        foreach(LevelData level in levelData)
+            if(level.numberChickens == score)
+                actualSpeedPlatform = level.speedPlatform;
+    }
 
+    public void UpdateSpreed() { }
 
     public void ChangeGameCanvas(GameState gameState) {
         gameCanvas.EnableCanvas(gameState);

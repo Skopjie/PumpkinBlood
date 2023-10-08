@@ -7,6 +7,7 @@ TagManager:
   - end
   - Obstaculo
   - Pollo
+  - activeEvent
   layers:
   - Default
   - TransparentFX
