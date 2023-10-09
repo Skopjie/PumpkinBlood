@@ -171,7 +171,8 @@ public class GameCanvas : MonoBehaviour
         fadeOnRectTransform.DOScale(new Vector3(2, 2, 2), fadeIcon1Timmer).OnComplete(() => {
             fadeOnRectTransform.DOScale(new Vector3(1, 1, 1), fadeIcon2Timmer).OnComplete(() => {
                 fadeOnRectTransform.DOScale(new Vector3(30, 30, 30), fadeIcon3Timmer);
-                fadeOnRectTransform.DOAnchorPos(new Vector2(0, -700), fadeIcon3Timmer);
+                fadeImage.DOFade(1.0f, fadeIcon3Timmer).SetEase(Ease.OutQuad);
+                fadeOnRectTransform.DOAnchorPos(new Vector2(0, 1600), fadeIcon3Timmer);
             });
         });
     }

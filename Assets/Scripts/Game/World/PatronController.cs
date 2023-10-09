@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +16,12 @@ public class PatronController : MonoBehaviour
 
     [Header("Componentes")]
     public Transform plartformScale;
-    [SerializeField] CandleController[] candleList;
 
     public Transform ChickenParentTransform;
-    [SerializeField] List<ChickenController> chickenControllers = new List<ChickenController>();
+    List<ChickenController> chickenControllers = new List<ChickenController>();
+
+    public Transform CandleParentTransform;
+    List<CandleController> candleList = new List<CandleController>();
 
     [SerializeField] bool isMoving = false;
 
@@ -33,6 +36,7 @@ public class PatronController : MonoBehaviour
         GameManager.Instance.OnGameStart += StartMovement;
 
         GetAllChickens();
+        GetAllCandles();
     }
 
     private void FixedUpdate() {
@@ -95,6 +99,15 @@ public class PatronController : MonoBehaviour
             ChickenController chikenControl = child.GetComponent<ChickenController>();
             if (chikenControl != null) {
                 chickenControllers.Add(chikenControl);
+            }
+        }
+    }
+
+    private void GetAllCandles() {
+        foreach (Transform child in CandleParentTransform) {
+            CandleController candelControl = child.GetComponent<CandleController>();
+            if (candelControl != null) {
+                candleList.Add(candelControl);
             }
         }
     }

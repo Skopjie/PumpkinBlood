@@ -1337,7 +1337,7 @@ MonoBehaviour:
   speedPatron: 7
   plartformScale: {fileID: 3096827874557371821}
   ChickenParentTransform: {fileID: 3096827874557371821}
-  chickenControllers: []
+  CandleParentTransform: {fileID: 3096827874557371821}
   isMoving: 0
 --- !u!1 &5017174339267999478
 GameObject:
