@@ -17,11 +17,8 @@ public class PatronController : MonoBehaviour
     [Header("Componentes")]
     public Transform plartformScale;
 
-    public Transform ChickenParentTransform;
-    List<ChickenController> chickenControllers = new List<ChickenController>();
-
-    public Transform CandleParentTransform;
-    List<CandleController> candleList = new List<CandleController>();
+    public Transform objectPlatformParent;
+    List<IObjectPlatform> objectPlatformList = new List<IObjectPlatform>();
 
     [SerializeField] bool isMoving = false;
 
@@ -35,8 +32,7 @@ public class PatronController : MonoBehaviour
         GameManager.Instance.OnGameIsOver += StopMovement;
         GameManager.Instance.OnGameStart += StartMovement;
 
-        GetAllChickens();
-        GetAllCandles();
+        GetAllObjectPlatform();
     }
 
     private void FixedUpdate() {
@@ -63,8 +59,7 @@ public class PatronController : MonoBehaviour
     }
 
     public void DisablePatron() {
-        DisctiveAllCandle();
-        ResetAllChickens();
+        ResetAllObjectPlatform();
         gameObject.SetActive(false);
     }
 
@@ -88,37 +83,24 @@ public class PatronController : MonoBehaviour
         transform.position = new Vector3(transform.position.x,transform.position.y, newPosition);
     }
 
-    void ResetAllChickens() {
-        foreach (ChickenController chicken in chickenControllers) {
-            chicken.ResetChicken();
+    void ResetAllObjectPlatform() {
+        foreach (IObjectPlatform obj in objectPlatformList) {
+            obj.ResetObject();
         }
     }
 
-    void GetAllChickens() {
-        foreach (Transform child in ChickenParentTransform) {
-            ChickenController chikenControl = child.GetComponent<ChickenController>();
-            if (chikenControl != null) {
-                chickenControllers.Add(chikenControl);
+    public void ActiveAllObjectPlatform() {
+        foreach (IObjectPlatform obj in objectPlatformList) {
+            obj.ActiveObject();
+        }
+    }
+
+    void GetAllObjectPlatform() {
+        foreach (Transform obj in objectPlatformParent) {
+            IObjectPlatform objControl = obj.GetComponent<IObjectPlatform>();
+            if (objControl != null) {
+                objectPlatformList.Add(objControl);
             }
         }
-    }
-
-    private void GetAllCandles() {
-        foreach (Transform child in CandleParentTransform) {
-            CandleController candelControl = child.GetComponent<CandleController>();
-            if (candelControl != null) {
-                candleList.Add(candelControl);
-            }
-        }
-    }
-
-    public void ActiveAllCandle() {
-        foreach(CandleController candel in candleList)
-            candel.ActiveCandle();
-    }
-
-    public void DisctiveAllCandle() {
-        foreach (CandleController candel in candleList)
-            candel.DisactiveCandle();
     }
 }

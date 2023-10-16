@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Componentes Pumpkin")]
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerRotation playerRotation;
+    [SerializeField] SphereCollider playerCollider;
 
     [Header("Variables")]
     public bool playerIsActive = false;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Death() {
+        playerCollider.enabled = false;
         DisactivePumpkinMovement();
 
         PumkinGO.SetActive(false);
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void SpawnPlayer() {
+        playerCollider.enabled = true;
         scorePlayer = 0;
         playerMovement.ResetInitialPosition();
         ParticleDeath.transform.position = deathPlayerInitPos;

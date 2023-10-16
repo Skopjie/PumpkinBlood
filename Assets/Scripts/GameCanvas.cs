@@ -119,7 +119,7 @@ public class GameCanvas : MonoBehaviour
 
 
 
-    void DisableAllCanvas() {
+    public void DisableAllCanvas() {
         LoadingGO.SetActive(false);
         MenuGO.SetActive(false);
         GameGO.SetActive(false);

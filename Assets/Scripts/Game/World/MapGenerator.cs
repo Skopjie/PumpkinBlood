@@ -11,13 +11,22 @@ public class MapGenerator : MonoBehaviour
 
     [Header("Variables")]
     [SerializeField] float waitTimeRaycast = 1;
+    [SerializeField] int numberOfLastRandomPatronSaved = 2;
 
     [Header("Componentes")]
     [SerializeField] PatronController lastPatron;
     [SerializeField] GameObject parentPatron;
     [SerializeField] GameObject mapStartPrefab;
 
+    [SerializeField] int[] lastRandomPatron;
+    int indexLastRandom = 0;
+    int numberOfDuplication = 0;
+    int indexRandomMap;
+
     private void Start() {
+        lastRandomPatron = new int[numberOfLastRandomPatronSaved];
+        for (int i = 0; i < lastRandomPatron.Length; i++) lastRandomPatron[i] = 0;
+
         InstantiateAllPrefabs();
         StartCoroutine(ContinuousRaycast());
 
@@ -69,13 +78,39 @@ public class MapGenerator : MonoBehaviour
     }
 
     PatronController GetRandomPatronMap() {
-        int indexRandomMap = Random.Range(0, patronMapPrefab.Length);
-        foreach(PatronController patron in patronDictionary[indexRandomMap]) {
+        indexRandomMap = Random.Range(0, patronMapPrefab.Length);
+        if(numberOfLastRandomPatronSaved > 0) SelectPatronNotDuplicate();
+
+        foreach (PatronController patron in patronDictionary[indexRandomMap]) {
             if(patron.IsActive() == false) {
                 return patron;
             }
         }
         return CreateNewPatron(indexRandomMap);
+    }
+
+    public int SelectPatronNotDuplicate() {
+        numberOfDuplication = 0;
+
+        while(numberOfDuplication == 0) {
+            foreach (int duplicatedNumber in lastRandomPatron) {
+                if (duplicatedNumber == indexRandomMap) {
+                    numberOfDuplication = 0;
+                    break;
+                }
+                numberOfDuplication++;
+            }
+
+            if(numberOfDuplication != 0) {
+                lastRandomPatron[indexLastRandom] = indexRandomMap;
+                indexLastRandom++;
+                if(indexLastRandom > lastRandomPatron.Length - 1) indexLastRandom = 0;
+                
+                return indexRandomMap; 
+            }
+            indexRandomMap = Random.Range(0, patronMapPrefab.Length);
+        }
+        return 0;
     }
 
     void InstantiatePatronMap() {

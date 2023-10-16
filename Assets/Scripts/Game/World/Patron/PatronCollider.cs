@@ -11,6 +11,6 @@ public class PatronCollider : MonoBehaviour
         if (other.gameObject.tag=="end")
             patronController.SetEnablePatron(false);
         if (other.gameObject.tag == "activeEvent")
-            patronController.ActiveAllCandle();
+            patronController.ActiveAllObjectPlatform();
     }
 }

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [Header("Componentes")]
     [SerializeField] BridgeConnection bridgePython;
     [SerializeField] GameCanvas gameCanvas;
+    [SerializeField] Animator coffinAnim;
 
     [Header("Variables")]
     public int score = 0;
@@ -67,6 +68,11 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator CorrutineGameExit() {
+        gameCanvas.DisableAllCanvas();
+        coffinAnim.SetTrigger("Death");
+
+        yield return new WaitForSeconds(1.25f);
+
         ChangeGameCanvas(GameState.ReturnToMenu);
         gameCanvas.PlayFadeOn();
         yield return new WaitForSeconds(gameCanvas.totalTimeFadeAnim);
@@ -74,7 +80,7 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Menu;
         MusicManager.Instance.ChangeMusicState(GameState.Menu);
         OnGameExit?.Invoke();
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
 
         gameCanvas.PlayFadeOff();
         yield return new WaitForSeconds(gameCanvas.totalTimeFadeAnim);
