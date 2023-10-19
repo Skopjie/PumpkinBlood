@@ -102,9 +102,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6902477975614617818}
+  - component: {fileID: 7115348846024052876}
   m_Layer: 0
   m_Name: Valla
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,6 +133,19 @@ Transform:
   m_Father: {fileID: 272251098717759166}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7115348846024052876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693641835599328127}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.72, z: 21.01}
+  m_Center: {x: 0, y: 0.3, z: 8.88}
 --- !u!1 &2934024948667953706
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7800487247861881982}
+  - component: {fileID: 6716893311186337279}
   m_Layer: 0
   m_Name: VallaIzq
   m_TagString: Untagged
@@ -355,6 +370,19 @@ Transform:
   m_Father: {fileID: 8860455076153467075}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6716893311186337279
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017174339267999478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.72, z: 21.01}
+  m_Center: {x: -0.22, y: 0.42, z: 8.88}
 --- !u!1 &5333126611182075534
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +892,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &2928993826589220064 stripped
 Transform:
@@ -934,7 +967,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &2932425010225909581 stripped
 Transform:
@@ -2280,7 +2318,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &399609015212369388 stripped
 Transform:
@@ -2866,7 +2909,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &2141185962801117620 stripped
 Transform:
@@ -3006,7 +3054,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &7196537652845267147 stripped
 Transform:
@@ -3072,7 +3125,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &7019950219554056437 stripped
 Transform:
@@ -3522,7 +3580,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &7918292592835025722 stripped
 Transform:
@@ -4116,7 +4179,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &8791011204865704575 stripped
 Transform:
@@ -4768,7 +4836,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &5915095987273917064 stripped
 Transform:
@@ -5148,7 +5221,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstaculo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714042106806171752, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171753, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171754, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171755, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
+    - {fileID: 2714042106806171756, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d2efa11e77527734ead27049ca9b2e67, type: 3}
 --- !u!4 &6224843234371043481 stripped
 Transform:

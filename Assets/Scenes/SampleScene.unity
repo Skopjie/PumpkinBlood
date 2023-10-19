@@ -2460,7 +2460,36 @@ PrefabInstance:
       propertyPath: objectPlatformParent
       value: 
       objectReference: {fileID: 1297911755}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 602469212332879025, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 7667893299549589098, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 1890874352339627236, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 7667893299549589099, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 1890874352339627237, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 7667893299549589096, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 1890874352339627238, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 7667893299549589097, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 1890874352339627239, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 7667893299549589102, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 1890874352339627232, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 144408986791145660, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 3402654786056952349, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 144408986791145661, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 3402654786056952348, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 144408986791145662, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 3402654786056952351, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 144408986791145663, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 3402654786056952350, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 144408986791145656, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 3402654786056952345, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 2181119528435110394, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 3889432283461682772, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 2181119528435110395, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 9133297039054783476, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 1931432751282859, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 6547403489553601422, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 6785082661018525584, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
+    - {fileID: 1113461482419569473, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f05a996972332b4495ecadc18fca909, type: 3}
 --- !u!1 &842556585
 GameObject:
@@ -3052,6 +3081,8 @@ MonoBehaviour:
   - {fileID: 1290863385191750357, guid: e5c082bf529faf14dafd2fe6a27541cc, type: 3}
   - {fileID: 1652175290249564425, guid: f8d3a93249532f8488a6fc4db39cebdf, type: 3}
   - {fileID: 7879442861942293482, guid: 491d737c389430046867907ff69c3625, type: 3}
+  - {fileID: 3635862702100419195, guid: 17ca140e6075e4348a37746c1778f2dd, type: 3}
+  - {fileID: 3427033897597576913, guid: c3cfd5d5e10635b4d8ef756b58105088, type: 3}
   childObjects: []
   waitTimeRaycast: 1
   numberOfLastRandomPatronSaved: 3
