@@ -15725,7 +15725,7 @@ MonoBehaviour:
   endPosition: {fileID: 8353960145235809696}
   objectPlatformGO: {fileID: 806813556834943270}
   moveSpeed: 6
-  axisEnityXZ: {x: 60, y: 0}
+  axisEnityXZ: {x: 0, y: 0}
   onlyOneMovement: 0
   startMovement: 1
 --- !u!1 &8353960145235809727
