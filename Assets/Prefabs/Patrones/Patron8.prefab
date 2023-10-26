@@ -355,6 +355,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4586445944325872810}
     m_Modifications:
+    - target: {fileID: 806813556834943268, guid: 7534f2a73eb497948a61eab03269c3bd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 806813556834943268, guid: 7534f2a73eb497948a61eab03269c3bd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 806813556834943268, guid: 7534f2a73eb497948a61eab03269c3bd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8353960144757197640, guid: 7534f2a73eb497948a61eab03269c3bd, type: 3}
       propertyPath: m_Name
       value: ChickenMovePatron
@@ -365,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8353960144757197641, guid: 7534f2a73eb497948a61eab03269c3bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3199997
+      value: -2.476
       objectReference: {fileID: 0}
     - target: {fileID: 8353960144757197641, guid: 7534f2a73eb497948a61eab03269c3bd, type: 3}
       propertyPath: m_LocalPosition.y
