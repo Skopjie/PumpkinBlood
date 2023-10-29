@@ -15,6 +15,7 @@ public enum GameState {
 public class LevelData {
     public int numberChickens;
     public float speedPlatform;
+    public string actionText;
 }
 
 public class GameManager : MonoBehaviour
@@ -30,10 +31,14 @@ public class GameManager : MonoBehaviour
     [Header("Variables")]
     public int score = 0;
 
-    public float actualSpeedPlatform = 15; //5
+    public LevelData actualLevelData;
 
     private void Awake() {
         instace = this;
+    }
+
+    private void Start() {
+        actualLevelData = levelData[0];
     }
 
     public GameState gameState = GameState.Loading;
@@ -43,6 +48,7 @@ public class GameManager : MonoBehaviour
     public Action OnGameIsOver = delegate { };
     public Action OnGameExit = delegate { };
     public Action OnCameraDetected = delegate { };
+    public Action OnNewLevel = delegate { };
 
     public void CameraDetected() { 
         OnCameraDetected?.Invoke();
@@ -50,6 +56,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame() {
+        startTime = DateTime.Now;
+        actualLevelData = levelData[0];
+        OnNewLevel?.Invoke();
         gameState = GameState.Game;
         MusicManager.Instance.PlaySFXSound(SoundEffects.Laught);
         MusicManager.Instance.ChangeMusicState(GameState.Game);
@@ -58,6 +67,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameIsOver() {
+        endTime = DateTime.Now;
+        GetTimePerGame();
         gameState = GameState.GameOver;
         MusicManager.Instance.ChangeMusicState(GameState.GameOver);
         OnGameIsOver?.Invoke(); 
@@ -65,6 +76,15 @@ public class GameManager : MonoBehaviour
 
     public void GameExit() {
         StartCoroutine(CorrutineGameExit());
+    }
+
+    public DateTime startTime;
+    public DateTime endTime;
+    public TimeSpan duracion;
+    public string duracionFormateada;
+    public void GetTimePerGame() {
+        duracion = endTime - startTime;
+        duracionFormateada = string.Format("{0:00}:{1:00}", (int)duracion.TotalMinutes, duracion.Seconds);
     }
 
     IEnumerator CorrutineGameExit() {
@@ -89,18 +109,21 @@ public class GameManager : MonoBehaviour
     public void AddScore() {
         score++;
         gameCanvas.ShowScore(score);
+        CheckNewLevel();
     }
 
     public void ResetScore() {
         score = 0;
         gameCanvas.ShowScore(score);
-        actualSpeedPlatform = 2;
     }
 
     public void CheckNewLevel() {
         foreach(LevelData level in levelData)
-            if(level.numberChickens == score)
-                actualSpeedPlatform = level.speedPlatform;
+            if (level.numberChickens == score) {
+                actualLevelData = level;
+                StartCoroutine(gameCanvas.ShowTextGame(level.actionText));
+                OnNewLevel?.Invoke();
+            }
     }
 
     public void UpdateSpreed() { }

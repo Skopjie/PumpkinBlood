@@ -134,7 +134,7 @@ TextureImporter:
         width: 147
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,6 +142,27 @@ TextureImporter:
       bones: []
       spriteID: a8e889c2bfb697145aeb10bc21224d5a
       internalID: 2137247634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boton1_2
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 40
+        width: 491
+        height: 302
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 282, y: 164, z: 163, w: 133}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6d7951952d6104d84ba72d98c1ed6c
+      internalID: 1887528715
       vertices: []
       indices: 
       edges: []
@@ -157,6 +178,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Boton1_2: 1887528715
       Boton1_1: 2137247634
       Boton1_0: -1180589103
   spritePackingTag: 

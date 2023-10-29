@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -19,8 +20,29 @@ public class Main : MonoBehaviour
         cmd.StartInfo.UseShellExecute = false;
         cmd.Start();
 
+        //comando activar entorno virtual
         cmd.StandardInput.WriteLine("cd C:\\Users\\Propietario\\OneDrive\\Escritorio\\ProyectosActuales\\python_Frontend_Games");
         cmd.StandardInput.WriteLine("python head_direction.py");
+    }
 
+    public static string GetBuildResourcesUrl() {
+        string path = Application.dataPath;
+        path = path.Replace(Application.productName + "_Data", string.Empty);
+        path += "resources";
+        return path;
+    }
+
+    public static string ConvertPath(string path) {
+        path = path.Replace("/", "\\");
+        return path;
+    }
+
+    public static string GetAssetsResourcesUrl() {
+        return Directory.GetParent(Application.dataPath).FullName;
+    }
+
+    public static string GetResourcesUrl() {
+        string pathResources = Application.isEditor ? GetAssetsResourcesUrl() : GetBuildResourcesUrl();
+        return pathResources;
     }
 }

@@ -28,9 +28,10 @@ public class PatronController : MonoBehaviour
     Vector3 forward = Vector3.forward;
 
     private void Start() {
-        //speedPatron = GameManager.Instance.actualSpeedPlatform;
+        //speedPatron = GameManager.Instance.actualLevelData.speedPlatform;
         GameManager.Instance.OnGameIsOver += StopMovement;
         GameManager.Instance.OnGameStart += StartMovement;
+        GameManager.Instance.OnNewLevel += UpdateSpeedPlatform;
 
         GetAllObjectPlatform();
     }
@@ -48,12 +49,17 @@ public class PatronController : MonoBehaviour
         } 
     }
 
+    void UpdateSpeedPlatform() {
+        speedPatron = GameManager.Instance.actualLevelData.speedPlatform;
+    }
+
     public void SetEnablePatron(bool enable) {
         if (enable) EnablePatron();
         else DisablePatron();
     }
 
     public void EnablePatron() {
+        speedPatron = GameManager.Instance.actualLevelData.speedPlatform;
         gameObject.SetActive(true);
         if (GameManager.Instance.gameState == GameState.Game) StartMovement();
     }

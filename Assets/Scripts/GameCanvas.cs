@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -41,10 +42,16 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] float fadeIcon2Timmer = 0.25f;
     [SerializeField] float fadeIcon3Timmer = 1;
 
+
     public float totalTimeFadeAnim = 0;
 
     [Header("Game Menu")]
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI actionsText;
+
+    [Header("Game Over")]
+    [SerializeField] TextMeshProUGUI scoreGameOverText;
+    [SerializeField] TextMeshProUGUI timmerText;
 
 
     private void Start() {
@@ -59,9 +66,15 @@ public class GameCanvas : MonoBehaviour
     }
 
 
-    public void EnableGameOver() { EnableCanvas(GameState.GameOver); }
+    public void EnableGameOver() {
+        actionsText.text = "";
+        EnableCanvas(GameState.GameOver); 
+    }
     public void EnableMenu() { EnableCanvas(GameState.Menu); }
-    public void EnableGame() { EnableCanvas(GameState.Game); }
+    public void EnableGame() { 
+        EnableCanvas(GameState.Game);
+        StartCoroutine(ShowTextGame("CHICKENS IN SIGHT!"));
+    }
 
     public void EnableInstructions() { EnableCanvas(GameState.Instructions); }
 
@@ -104,6 +117,8 @@ public class GameCanvas : MonoBehaviour
                 GameGO.SetActive(true);
                 break;
             case GameState.GameOver:
+                scoreGameOverText.text = GameManager.Instance.score.ToString();
+                timmerText.text = GameManager.Instance.duracionFormateada;
                 GameOverGO.SetActive(true);
                 break;
             case GameState.Instructions:
@@ -135,7 +150,11 @@ public class GameCanvas : MonoBehaviour
         gameOverCamera.Priority = 10;
     }
 
-
+    public IEnumerator ShowTextGame(string newText) {
+        actionsText.text = "<wave>"+ newText+ "</wave>";
+        yield return new WaitForSeconds(2.5f);
+        actionsText.text = "<wave> </wave>";
+    }
 
     public void ShowScore(int score) {
         scoreText.text = "<wave>X"+score+"</wave>";
