@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     public Action OnCameraDetected = delegate { };
     public Action OnNewLevel = delegate { };
 
+
     public void CameraDetected() { 
         OnCameraDetected?.Invoke();
         MusicManager.Instance.ChangeMusicState(GameState.Menu);
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour
             if (level.numberChickens == score) {
                 actualLevelData = level;
                 StartCoroutine(gameCanvas.ShowTextGame(level.actionText));
+                MusicManager.Instance.PlaySFXSound(SoundEffects.Laught);
                 OnNewLevel?.Invoke();
             }
     }

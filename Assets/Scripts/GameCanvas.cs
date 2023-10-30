@@ -6,6 +6,9 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using System;
+using Febucci.UI;
+using Unity.VisualScripting;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -47,7 +50,7 @@ public class GameCanvas : MonoBehaviour
 
     [Header("Game Menu")]
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI actionsText;
+    [SerializeField] TypewriterByCharacter typewriter;
 
     [Header("Game Over")]
     [SerializeField] TextMeshProUGUI scoreGameOverText;
@@ -67,13 +70,14 @@ public class GameCanvas : MonoBehaviour
 
 
     public void EnableGameOver() {
-        actionsText.text = "";
+        typewriter.ShowText("<wave></wave>");
+        typewriter.StartDisappearingText();
         EnableCanvas(GameState.GameOver); 
     }
     public void EnableMenu() { EnableCanvas(GameState.Menu); }
     public void EnableGame() { 
         EnableCanvas(GameState.Game);
-        StartCoroutine(ShowTextGame("CHICKENS IN SIGHT!"));
+        StartCoroutine(ShowTextGame("GET SOULS!"));
     }
 
     public void EnableInstructions() { EnableCanvas(GameState.Instructions); }
@@ -151,9 +155,9 @@ public class GameCanvas : MonoBehaviour
     }
 
     public IEnumerator ShowTextGame(string newText) {
-        actionsText.text = "<wave>"+ newText+ "</wave>";
+        typewriter.ShowText("<wave>" + newText + "</wave>");
         yield return new WaitForSeconds(2.5f);
-        actionsText.text = "<wave> </wave>";
+        typewriter.StartDisappearingText();
     }
 
     public void ShowScore(int score) {

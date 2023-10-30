@@ -7,13 +7,20 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     [SerializeField] BridgeConnection pythonConnection;
+    Process cmd;
 
     void Start() {
         InitPowerShell();
     }
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            QuitApliaction();
+        }
+    }
+
 
     void InitPowerShell() {
-        Process cmd = new Process();
+        cmd = new Process();
         cmd.StartInfo.FileName = @"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe";
 
         cmd.StartInfo.RedirectStandardInput = true;
@@ -21,28 +28,24 @@ public class Main : MonoBehaviour
         cmd.Start();
 
         //comando activar entorno virtual
-        cmd.StandardInput.WriteLine("cd C:\\Users\\Propietario\\OneDrive\\Escritorio\\ProyectosActuales\\python_Frontend_Games");
-        cmd.StandardInput.WriteLine("python head_direction.py");
+        #if UNITY_EDITOR
+                cmd.StandardInput.WriteLine("cd C:\\Users\\Propietario\\OneDrive\\Escritorio\\ProyectosActuales\\python_Frontend_Games");
+                //cmd.StandardInput.WriteLine("./BloodyPumpkin/Scripts/Activate");
+                cmd.StandardInput.WriteLine("python head_direction.py");
+        #endif
+        #if UNITY_STANDALONE
+                cmd.StandardInput.WriteLine("./BloodyPumpkin/Scripts/Activate");
+                cmd.StandardInput.WriteLine("python head_direction.py");
+                //cmd.StandardInput.WriteLine("tfod/Scripts/Python.exe program.py");
+        #endif
     }
 
-    public static string GetBuildResourcesUrl() {
-        string path = Application.dataPath;
-        path = path.Replace(Application.productName + "_Data", string.Empty);
-        path += "resources";
-        return path;
+    private void OnApplicationQuit() {
+        cmd.Close();
     }
 
-    public static string ConvertPath(string path) {
-        path = path.Replace("/", "\\");
-        return path;
-    }
-
-    public static string GetAssetsResourcesUrl() {
-        return Directory.GetParent(Application.dataPath).FullName;
-    }
-
-    public static string GetResourcesUrl() {
-        string pathResources = Application.isEditor ? GetAssetsResourcesUrl() : GetBuildResourcesUrl();
-        return pathResources;
+    public void QuitApliaction() {
+        cmd.Close();
+        Application.Quit();
     }
 }
